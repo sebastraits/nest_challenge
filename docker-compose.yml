@@ -7,10 +7,15 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - .:/app
-      - /app/node_modules
+      - .:/api
+      - /api/node_modules
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=project
+      - DB_USERNAME=myuser
+      - DB_PASSWORD=mypassword123!
     restart: unless-stopped
     depends_on:
       - db
