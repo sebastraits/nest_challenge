@@ -37,4 +37,11 @@ export class Company extends Base {
   })
   @OneToMany(() => Transfer, (transfer) => transfer.company)
   transfers: Transfer[];
+
+  constructor(companyName: string, cuit: string) {
+    super();
+    this.companyName = companyName;
+    this.cuit = cuit;
+    this.adhesionDate = new Date();
+  }
 }

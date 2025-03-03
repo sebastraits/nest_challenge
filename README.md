@@ -63,6 +63,6 @@ docker compose up
 
 ## Contacto
 
-Sebastian Nieto - - sebanietodeveloper@gmail.com
+Sebastian Nieto - sebanietodeveloper@gmail.com
 
 Project Link: [https://github.com/sebastraits/nest_challenge](https://github.com/sebastraits/nest_challenge)
