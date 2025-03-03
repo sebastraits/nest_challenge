@@ -5,6 +5,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class Company extends Base {
+  // CreatedAt and UpdatedAt are already handled by Base
   @ApiProperty({
     description: 'The name of the company',
     example: 'companyName',

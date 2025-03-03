@@ -1,7 +1,8 @@
 import { Transfer } from 'src/transfer/entities/transfer.entity';
-import { CompanyDto } from '../dto/conpany.dto';
 
-export interface ICompany extends CompanyDto {
+export interface ICompany {
+  companyName: string;
+  cuit: string;
   adhesionDate: Date;
   transfers?: Transfer[];
 }

@@ -10,7 +10,10 @@ import { Company } from './entities/company.entity';
   imports: [TypeOrmModule.forFeature([Company])],
   controllers: [CompanyController],
   providers: [
-    CompanyService,
+    {
+      provide: InjectionEnum.COMPANY_SERVICE,
+      useClass: CompanyService,
+    },
     {
       provide: InjectionEnum.COMPANY_REPOSITORY,
       useClass: CompanyRepository,

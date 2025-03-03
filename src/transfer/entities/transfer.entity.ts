@@ -4,6 +4,7 @@ import { Column, Entity, ManyToOne } from 'typeorm';
 
 @Entity()
 export class Transfer extends Base {
+  // CreatedAt and UpdatedAt are already handled by Base
   @Column({ nullable: false, type: 'decimal', precision: 10, scale: 2 })
   amount: number;
 

@@ -6,24 +6,30 @@ import {
   Get,
   SerializeOptions,
   UseInterceptors,
+  Inject,
 } from '@nestjs/common';
-import { CompanyService } from '../services/company.service';
 import { CompanyDto } from '../dto/conpany.dto';
 import {
   ApiBadRequestResponse,
   ApiConflictResponse,
   ApiCreatedResponse,
+  ApiOkResponse,
 } from '@nestjs/swagger';
 import { Company } from '../entities/company.entity';
 import {
-  swaggerPostCompanyBadRequestExample,
-  swaggerPostCompanyConflictExample,
-  swaggerPostCompanyExample,
+  companyExample,
+  companyPostBadRequestExample,
+  companyPostConflictExample,
 } from 'src/common/swagger/responseExamples/company';
+import { InjectionEnum } from 'src/common/enums/injection';
+import { ICompanyService } from '../services/company.service.interface';
 
 @Controller('/company')
 export class CompanyController {
-  constructor(private readonly companyService: CompanyService) {}
+  constructor(
+    @Inject(InjectionEnum.COMPANY_SERVICE)
+    private readonly companyService: ICompanyService,
+  ) {}
 
   @UseInterceptors(ClassSerializerInterceptor)
   @SerializeOptions({ type: Company })
@@ -32,22 +38,43 @@ export class CompanyController {
     description: 'Created Succesfully',
     type: Company,
     isArray: false,
-    example: swaggerPostCompanyExample,
+    example: companyExample,
   })
   @ApiBadRequestResponse({
     description: 'Bad Request',
-    example: swaggerPostCompanyBadRequestExample,
+    example: companyPostBadRequestExample,
   })
   @ApiConflictResponse({
     description: 'Company already exists',
-    example: swaggerPostCompanyConflictExample,
+    example: companyPostConflictExample,
   })
   create(@Body() companyDto: CompanyDto): Promise<Company> {
     return this.companyService.create(companyDto);
   }
 
-  @Get('/recently-joined')
-  findRecentlyJoined(): Promise<Company[]> {
-    return this.companyService.findRecentlyJoined();
+  @UseInterceptors(ClassSerializerInterceptor)
+  @SerializeOptions({ type: Company })
+  @Get('/recently-added')
+  @ApiOkResponse({
+    description: 'Ok',
+    type: Company,
+    isArray: true,
+    example: [companyExample],
+  })
+  findRecentlyAdded(): Promise<Company[]> {
+    return this.companyService.findRecentlyAdded();
+  }
+
+  @UseInterceptors(ClassSerializerInterceptor)
+  @SerializeOptions({ type: Company })
+  @Get('/with-recent-transfers')
+  @ApiOkResponse({
+    description: 'Ok',
+    type: Company,
+    isArray: true,
+    example: [companyExample],
+  })
+  findWithRecentTransfers(): Promise<Company[]> {
+    return this.companyService.findWithRecentTransfers();
   }
 }

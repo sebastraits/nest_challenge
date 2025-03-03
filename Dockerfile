@@ -4,7 +4,7 @@ WORKDIR /api
 
 COPY package*.json ./
 
-RUN npm install --include=dev
+RUN npm install
 
 COPY . .
 

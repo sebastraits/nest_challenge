@@ -20,11 +20,21 @@ export class CompanyRepository implements ICompanyRepository {
     return this.companyRepository.findOne({ where: { cuit } });
   }
 
-  async findRecentlyJoined(fromDate: Date): Promise<Company[]> {
-    console.log('fromDate', fromDate);
+  async findRecentlyAdded(fromDate: Date): Promise<Company[]> {
     return this.companyRepository.find({
       where: {
         adhesionDate: MoreThanOrEqual(fromDate),
+      },
+    });
+  }
+
+  async findWithRecentTransfers(fromDate: Date): Promise<Company[]> {
+    return this.companyRepository.find({
+      relations: ['transfers'],
+      where: {
+        transfers: {
+          createdAt: MoreThanOrEqual(fromDate),
+        },
       },
     });
   }
