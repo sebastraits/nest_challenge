@@ -1,7 +1,5 @@
 <h1 align="center">Sooft challenge</h1>
-<p align="center"><a href="#Enunciado">Enunciado</a> - <a href="#Instalación">Instalación</a> - <a href="#technology-stack">Stack tecnologico</a>- <a href="#API">API</a>>Stack tecnologico</a></p>
-
-<img src="https://repolaunch.vercel.app/assets/img/yt.webp" alt="" align="center" width="auto" height="auto">
+<p align="center"><a href="#Enunciado">Enunciado</a> - <a href="#Instalación">Instalación</a> - <a href="#technology-stack">Stack tecnologico</a>- <a href="#API">API</a></p>
 
 ## Enunciado
 
@@ -28,12 +26,14 @@ Realizar pruebas unitarias.
 
 ## Tech Stack
 
-**Backend**: Node.js, Nest.js, Typescript  
-**Base de Datos**: MySQL
+**Backend**: Nest.js, Typescript
+**Base de Datos**: MySQL, TypeORM
 **Documentación**: Swagger
 **Test**: Jest
 
 ## API
+
+**Swagger**: http://localhost:3000/api
 
 1. **POST**: http://localhost:3000/company/
 2. **GET**: http://localhost:3000/company/with-recent-transfers
