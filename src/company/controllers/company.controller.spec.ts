@@ -31,8 +31,6 @@ describe('CompanyController', () => {
 
     controller = module.get<CompanyController>(CompanyController);
     service = module.get<CompanyService>(InjectionEnum.COMPANY_SERVICE);
-
-    global.company1 = new Company('Test Company', '20259594880');
   });
 
   it('should be defined', () => {
@@ -40,7 +38,7 @@ describe('CompanyController', () => {
   });
 
   describe('Create', () => {
-    it('should call companyService.create with the correct parameters', async () => {
+    it('should return created company', async () => {
       const companyData: CompanyDto = {
         companyName: 'Test Company',
         cuit: '20259594880',
