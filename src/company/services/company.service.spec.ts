@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CompanyService } from '../services/company.service';
-import { InjectionEnum } from '../../../src/common/enums/injection';
+import { InjectionEnum } from 'src/common/enums/injection';
 import { CompanyDto } from '../dto/conpany.dto';
 import { Company } from '../entities/company.entity';
 import { ConflictException } from '@nestjs/common';

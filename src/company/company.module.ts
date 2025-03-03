@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { CompanyController } from './controllers/company.controller';
 import { CompanyService } from './services/company.service';
 import { CompanyRepository } from './repositories/company.repository';
-import { InjectionEnum } from '../../src/common/enums/injection';
+import { InjectionEnum } from 'src/common/enums/injection';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Company } from './entities/company.entity';
 

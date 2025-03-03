@@ -2,7 +2,7 @@ import { ConflictException, Inject, Injectable } from '@nestjs/common';
 import { Company } from '../entities/company.entity';
 import { ICompanyRepository } from '../repositories/company.repository.interface';
 import { CompanyDto } from '../dto/conpany.dto';
-import { InjectionEnum } from '../../../src/common/enums/injection';
+import { InjectionEnum } from 'src/common/enums/injection';
 import { ICompanyService } from './company.service.interface';
 
 @Injectable()

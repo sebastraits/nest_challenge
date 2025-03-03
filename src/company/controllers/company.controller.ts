@@ -20,8 +20,8 @@ import {
   companyExample,
   companyPostBadRequestExample,
   companyPostConflictExample,
-} from '../../../src/common/swagger/responseExamples/company';
-import { InjectionEnum } from '../../../src/common/enums/injection';
+} from 'src/common/swagger/responseExamples/company';
+import { InjectionEnum } from 'src/common/enums/injection';
 import { ICompanyService } from '../services/company.service.interface';
 
 @Controller('/company')
