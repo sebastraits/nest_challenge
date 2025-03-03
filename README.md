@@ -1,5 +1,5 @@
 <h1 align="center">Nest challenge</h1>
-<p align="center"><a href="#Enunciado">Enunciado</a> - <a href="#Instalación">Instalación</a> - <a href="#technology-stack">Stack tecnologico</a>- <a href="#API">API</a></p>
+<p align="center"><a href="#Enunciado">Enunciado</a> - <a href="#Instalación">Instalación</a> - <a href="#Pruebas unitarias">Pruebas unitarias</a> <a href="#Stack tecnologico">Stack tecnologico</a>- <a href="#API">API</a> - <a href="#Contacto">Contacto</a></p>
 
 ## Enunciado
 
@@ -19,21 +19,34 @@ Realizar pruebas unitarias.
 ## Instalación
 
 1. Clonar el repositorio
-   ```bash
+
+```bash
 git clone https://github.com/sebastraits/nest_challenge
 ```
+
 2. Iniciar los contenedores
+
 ```bash
 docker compose up
 ```
+
 3. Ejecutar las migraciones
-   ```bash
+
+```bash
   npm run migration:run
-  ```
+```
 
 (.env se incluye ya que es un aplicación de prueba y no contiene datos sensibles)
 
-## Tech Stack
+## Pruebas unitarias
+
+1. Ejecutar los test
+
+```bash
+  npm run test
+```
+
+## Stack tecnologico
 
 **Backend**: Nest.js, Typescript
 **Base de Datos**: MySQL, TypeORM
@@ -48,7 +61,7 @@ docker compose up
 2. **GET**: http://localhost:3000/company/with-recent-transfers
 3. **GET**: http://localhost:3000/company/recently-added
 
-## Contact
+## Contacto
 
 Sebastian Nieto - - sebanietodeveloper@gmail.com
 
