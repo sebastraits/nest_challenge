@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MoreThanOrEqual, Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { Company } from '../entities/company.entity';
 import { ICompanyRepository } from './company.repository.interface';
 import { ICompany } from '../interfaces/company';
@@ -20,20 +20,23 @@ export class CompanyRepository implements ICompanyRepository {
     return this.companyRepository.findOne({ where: { cuit } });
   }
 
-  async findRecentlyAdded(fromDate: Date): Promise<Company[]> {
+  async findAddedInDateRange(fromDate: Date, toDate: Date): Promise<Company[]> {
     return this.companyRepository.find({
       where: {
-        adhesionDate: MoreThanOrEqual(fromDate),
+        adhesionDate: Between(fromDate, toDate),
       },
     });
   }
 
-  async findWithRecentTransfers(fromDate: Date): Promise<Company[]> {
+  async findWithTransfersInDateRange(
+    fromDate: Date,
+    toDate: Date,
+  ): Promise<Company[]> {
     return this.companyRepository.find({
       relations: ['transfers'],
       where: {
         transfers: {
-          createdAt: MoreThanOrEqual(fromDate),
+          createdAt: Between(fromDate, toDate),
         },
       },
     });

@@ -11,10 +11,10 @@ export class Migration1740963230679 implements MigrationInterface {
         ('Finance Experts Co', '45678901234', '2024-11-04'),
         ('Retail Ventures Group', '56789012345', '2024-11-05'),
         ('Logistics & Transport', '67890123456', '2024-11-06'),
-        ('Construction Leaders', '78901234567', '2025-11-07'),
-        ('Energy Pioneers Corp', '89012345678', '2025-12-08'),
-        ('Food & Beverage Holdings', '90123456789', '2025-02-01'),
-        ('Media & Entertainment', '01234567890', '2025-02-02');
+        ('Construction Leaders', '78901234567', '2025-02-25'),
+        ('Energy Pioneers Corp', '89012345678', '2025-02-28'),
+        ('Food & Beverage Holdings', '90123456789', '2025-03-01'),
+        ('Media & Entertainment', '01234567890', '2025-03-03');
     `);
 
     await queryRunner.query(`

@@ -50,7 +50,7 @@ docker compose up
 
 **Backend**: Nest.js, Typescript
 **Base de Datos**: MySQL, TypeORM
-**Documentación**: Swagger
+**Documentación API**: Swagger
 **Test**: Jest
 
 ## API

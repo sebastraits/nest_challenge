@@ -25,8 +25,8 @@ describe('CompanyService', () => {
           useValue: {
             create: jest.fn(),
             findOneByCuit: jest.fn(),
-            findRecentlyAdded: jest.fn(),
-            findWithRecentTransfers: jest.fn(),
+            findAddedInDateRange: jest.fn(),
+            findWithTransfersInDateRange: jest.fn(),
           },
         },
       ],
@@ -83,7 +83,9 @@ describe('CompanyService', () => {
         new Company('Test Company 2', '20259594881'),
       ];
 
-      jest.spyOn(repository, 'findRecentlyAdded').mockResolvedValue(companies);
+      jest
+        .spyOn(repository, 'findAddedInDateRange')
+        .mockResolvedValue(companies);
 
       const result = await service.findAddedLastMonth();
       expect(result).toEqual(companies);
@@ -98,7 +100,7 @@ describe('CompanyService', () => {
       ];
 
       jest
-        .spyOn(repository, 'findWithRecentTransfers')
+        .spyOn(repository, 'findWithTransfersInDateRange')
         .mockResolvedValue(companies);
 
       const result = await service.findWithTransfersLastMonth();

@@ -16,7 +16,6 @@ export class CustomHttpExceptionFilter implements ExceptionFilter {
 
     const errorResponse = {
       statusCode: status,
-      timestamp: new Date().toISOString(),
       path: request.url,
       message: exception.message,
     };
