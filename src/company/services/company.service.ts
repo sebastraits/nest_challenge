@@ -4,6 +4,7 @@ import { ICompanyRepository } from '../repositories/company.repository.interface
 import { CompanyDto } from '../dto/conpany.dto';
 import { InjectionEnum } from 'src/common/enums/injection';
 import { ICompanyService } from './company.service.interface';
+import { findOneMonthAgoDate } from 'src/common/helpers/date';
 
 @Injectable()
 export class CompanyService implements ICompanyService {
@@ -24,16 +25,16 @@ export class CompanyService implements ICompanyService {
     });
   }
 
-  async findRecentlyAdded(): Promise<Company[]> {
-    const DAYS_TO_SHOW = 30; // This could be passed as a parameter if the EP needs to be extended.
-    const fromDate = new Date(Date.now() - DAYS_TO_SHOW * 24 * 60 * 60 * 1000);
-    return await this.companyRepository.findRecentlyAdded(fromDate);
+  async findAddedLastMonth(): Promise<Company[]> {
+    const dateOneMonthAgo = findOneMonthAgoDate();
+    return await this.companyRepository.findRecentlyAdded(dateOneMonthAgo);
   }
 
-  async findWithRecentTransfers(): Promise<Company[]> {
-    const DAYS_TO_SHOW = 30; // This could be passed as a parameter if the EP needs to be extended.
-    const fromDate = new Date(Date.now() - DAYS_TO_SHOW * 24 * 60 * 60 * 1000);
-    return await this.companyRepository.findWithRecentTransfers(fromDate);
+  async findWithTransfersLastMonth(): Promise<Company[]> {
+    const dateOneMonthAgo = findOneMonthAgoDate();
+    return await this.companyRepository.findWithRecentTransfers(
+      dateOneMonthAgo,
+    );
   }
 
   async findOneByCuit(cuit: string): Promise<Company | null> {

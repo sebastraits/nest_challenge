@@ -18,8 +18,8 @@ describe('CompanyController', () => {
           provide: InjectionEnum.COMPANY_SERVICE,
           useValue: {
             create: jest.fn(),
-            findRecentlyAdded: jest.fn(),
-            findWithRecentTransfers: jest.fn(),
+            findAddedLastMonth: jest.fn(),
+            findWithTransfersLastMonth: jest.fn(),
           },
         },
         {
@@ -111,9 +111,9 @@ describe('CompanyController', () => {
         new Company('Test Company 2', '20259594881'),
       ];
 
-      jest.spyOn(service, 'findRecentlyAdded').mockResolvedValue(companies);
+      jest.spyOn(service, 'findAddedLastMonth').mockResolvedValue(companies);
 
-      const result = await controller.findRecentlyAdded();
+      const result = await controller.findAddedLastMonth();
 
       expect(result).toEqual(companies);
     });
@@ -127,10 +127,10 @@ describe('CompanyController', () => {
       ];
 
       jest
-        .spyOn(service, 'findWithRecentTransfers')
+        .spyOn(service, 'findWithTransfersLastMonth')
         .mockResolvedValue(companies);
 
-      const result = await controller.findWithRecentTransfers();
+      const result = await controller.findWithTransfersLastMonth();
 
       expect(result).toEqual(companies);
     });

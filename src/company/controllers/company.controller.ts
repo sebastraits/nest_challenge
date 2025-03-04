@@ -54,27 +54,27 @@ export class CompanyController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @SerializeOptions({ type: Company })
-  @Get('/recently-added')
+  @Get('/added-last-month')
   @ApiOkResponse({
     description: 'Ok',
     type: Company,
     isArray: true,
     example: [companyExample],
   })
-  findRecentlyAdded(): Promise<Company[]> {
-    return this.companyService.findRecentlyAdded();
+  findAddedLastMonth(): Promise<Company[]> {
+    return this.companyService.findAddedLastMonth();
   }
 
   @UseInterceptors(ClassSerializerInterceptor)
   @SerializeOptions({ type: Company })
-  @Get('/with-recent-transfers')
+  @Get('/with-transfers-last-month')
   @ApiOkResponse({
     description: 'Ok',
     type: Company,
     isArray: true,
     example: [companyExample],
   })
-  findWithRecentTransfers(): Promise<Company[]> {
-    return this.companyService.findWithRecentTransfers();
+  findWithTransfersLastMonth(): Promise<Company[]> {
+    return this.companyService.findWithTransfersLastMonth();
   }
 }

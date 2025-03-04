@@ -3,7 +3,7 @@ import { Company } from '../entities/company.entity';
 
 export interface ICompanyService {
   create(company: CompanyDto): Promise<Company>;
-  findRecentlyAdded(): Promise<Company[]>;
+  findAddedLastMonth(): Promise<Company[]>;
   findOneByCuit(cuit: string): Promise<Company | null>;
-  findWithRecentTransfers(): Promise<Company[]>;
+  findWithTransfersLastMonth(): Promise<Company[]>;
 }

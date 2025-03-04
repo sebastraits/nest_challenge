@@ -58,8 +58,8 @@ docker compose up
 **Swagger**: http://localhost:3000/api
 
 1. **POST**: http://localhost:3000/company/
-2. **GET**: http://localhost:3000/company/with-recent-transfers
-3. **GET**: http://localhost:3000/company/recently-added
+2. **GET**: http://localhost:3000/company/with-transfers-last-month
+3. **GET**: http://localhost:3000/company/added-last-month
 
 ## Contacto
 

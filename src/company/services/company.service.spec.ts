@@ -6,6 +6,7 @@ import { Company } from '../entities/company.entity';
 import { ConflictException } from '@nestjs/common';
 import { CompanyController } from '../controllers/company.controller';
 import { CompanyRepository } from '../repositories/company.repository';
+import * as dateHelper from '../../../src/common/helpers/date';
 
 describe('CompanyService', () => {
   let service: CompanyService;
@@ -35,6 +36,9 @@ describe('CompanyService', () => {
     repository = module.get<CompanyRepository>(
       InjectionEnum.COMPANY_REPOSITORY,
     );
+    jest
+      .spyOn(dateHelper, 'findOneMonthAgoDate')
+      .mockReturnValue(new Date('2025-01-01'));
   });
 
   it('should be defined', () => {
@@ -51,7 +55,6 @@ describe('CompanyService', () => {
 
       jest.spyOn(repository, 'findOneByCuit').mockResolvedValue(null);
       jest.spyOn(repository, 'create').mockResolvedValue(expectedResult);
-
       const result = await service.create(companyData);
       expect(result).toEqual(expectedResult);
     });
@@ -82,8 +85,7 @@ describe('CompanyService', () => {
 
       jest.spyOn(repository, 'findRecentlyAdded').mockResolvedValue(companies);
 
-      const result = await service.findRecentlyAdded();
-
+      const result = await service.findAddedLastMonth();
       expect(result).toEqual(companies);
     });
   });
@@ -99,8 +101,7 @@ describe('CompanyService', () => {
         .spyOn(repository, 'findWithRecentTransfers')
         .mockResolvedValue(companies);
 
-      const result = await service.findWithRecentTransfers();
-
+      const result = await service.findWithTransfersLastMonth();
       expect(result).toEqual(companies);
     });
   });
