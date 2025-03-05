@@ -5,7 +5,6 @@ import { CompanyDto } from '../dto/conpany.dto';
 import { InjectionEnum } from 'src/common/enums/injection';
 import { ICompanyService } from './company.service.interface';
 import { findOneMonthAgoDate } from 'src/common/helpers/date';
-import * as moment from 'moment';
 
 @Injectable()
 export class CompanyService implements ICompanyService {
@@ -28,8 +27,7 @@ export class CompanyService implements ICompanyService {
 
   async findAddedLastMonth(): Promise<Company[]> {
     const dateOneMonthAgo = findOneMonthAgoDate();
-    const today = moment().toDate();
-    console.log(dateOneMonthAgo, today);
+    const today = new Date();
     return await this.companyRepository.findAddedInDateRange(
       dateOneMonthAgo,
       today,
@@ -38,7 +36,7 @@ export class CompanyService implements ICompanyService {
 
   async findWithTransfersLastMonth(): Promise<Company[]> {
     const dateOneMonthAgo = findOneMonthAgoDate();
-    const today = moment().toDate();
+    const today = new Date();
     return await this.companyRepository.findWithTransfersInDateRange(
       dateOneMonthAgo,
       today,

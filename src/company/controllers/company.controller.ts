@@ -14,6 +14,7 @@ import {
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiOkResponse,
+  ApiOperation,
 } from '@nestjs/swagger';
 import { Company } from '../entities/company.entity';
 import {
@@ -34,6 +35,9 @@ export class CompanyController {
   @UseInterceptors(ClassSerializerInterceptor)
   @SerializeOptions({ type: Company })
   @Post()
+  @ApiOperation({
+    summary: 'Generates the adhesion of a company',
+  })
   @ApiCreatedResponse({
     description: 'Created Succesfully',
     type: Company,
@@ -55,6 +59,9 @@ export class CompanyController {
   @UseInterceptors(ClassSerializerInterceptor)
   @SerializeOptions({ type: Company })
   @Get('/added-last-month')
+  @ApiOperation({
+    summary: 'Returns the companies added in the last month',
+  })
   @ApiOkResponse({
     description: 'Ok',
     type: Company,
@@ -68,6 +75,9 @@ export class CompanyController {
   @UseInterceptors(ClassSerializerInterceptor)
   @SerializeOptions({ type: Company })
   @Get('/with-transfers-last-month')
+  @ApiOperation({
+    summary: 'Returns the companies with transfers in the last month',
+  })
   @ApiOkResponse({
     description: 'Ok',
     type: Company,
